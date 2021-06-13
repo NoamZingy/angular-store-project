@@ -1,3 +1,4 @@
+const { Mongoose } = require("mongoose");
 const Product = require("../models/product.model");
 
 const addProduct = async ({name,image,price,categoryID}) => {
@@ -9,6 +10,23 @@ const addProduct = async ({name,image,price,categoryID}) => {
         throw err;
     }
 }
+ const getAllProducts = async() =>{
+     try {
+         return await Product.find({});
+     }
+     catch(err){
+         throw err;
+     }
+ }
+ const getAllProductsByCategoryID = async(categoryID) =>{
+    try {
+        return await Product.find({categoryID:categoryID});
+    }
+    catch(err){
+        throw err;
+    }
+}
+
 // const getUser = async ({email,password}) =>{
 //     try {
 //         const user = await User.findOne({email:email,password:password})
@@ -19,5 +37,7 @@ const addProduct = async ({name,image,price,categoryID}) => {
 //     }
 // }
 module.exports= {
-    addProduct
+    addProduct,
+    getAllProducts,
+    getAllProductsByCategoryID
 }

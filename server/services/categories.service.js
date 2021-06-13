@@ -9,15 +9,15 @@ const addCategory = async ({name}) => {
         throw err;
     }
 }
-// const getUser = async ({email,password}) =>{
-//     try {
-//         const user = await User.findOne({email:email,password:password})
-//         return user;
-//     }
-//     catch(err){
-//         throw err;
-//     }
-// }
+const getAllCategories = async() =>{
+    try {
+        return await Category.find({});
+    }
+    catch(err){
+        throw err;
+    }
+}
 module.exports= {
-    addCategory
+    addCategory,
+    getAllCategories
 }

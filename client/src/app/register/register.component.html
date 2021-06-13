@@ -1,0 +1,127 @@
+<div class="register-user">
+  <mat-horizontal-stepper linear>
+    <mat-step label="First form" [stepControl]="firstPartGroup">
+      <p>Enter your information for registration</p>
+      <form [formGroup]="firstPartGroup">
+        <mat-form-field class="example-full-width user">
+          <mat-label> ID </mat-label>
+          <input matInput formControlName="ID" required maxlength="9" matInput/>
+          <mat-error *ngIf="firstPartGroup.get('ID').hasError('required')">
+            Please enter your ID
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width email">
+          <mat-label> E-Mail </mat-label>
+          <input matInput formControlName="email" required/>
+          <mat-error
+            *ngIf="firstPartGroup.get('email').hasError('required')"
+          >
+            Please enter your email
+          </mat-error>
+          <mat-error *ngIf="firstPartGroup.get('email').hasError('email')">
+            Please enter a valid email address
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width password">
+          <mat-label> Password </mat-label>
+          <input
+            matInput
+            [type]="hidePass ? 'password' : 'text'"
+            formControlName="password"
+            required
+          />
+          <button mat-icon-button matSuffix (click)="hidePass = !hidePass">
+            <mat-icon>{{
+              hidePass ? "visibility_off" : "visibility"
+            }}</mat-icon>
+          </button>
+          <mat-error
+            *ngIf="firstPartGroup.get('password').hasError('required')"
+          >
+            Please enter your password
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width confirmPassword">
+          <mat-label> Confirm Password </mat-label>
+          <input
+            matInput
+            [type]="confirmHidePass ? 'password' : 'text'"
+            formControlName="confirmPassword"
+            required
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="confirmHidePass = !confirmHidePass"
+          >
+            <mat-icon>{{
+              hidePass ? "visibility_off" : "visibility"
+            }}</mat-icon>
+          </button>
+          <mat-error
+            *ngIf="
+              firstPartGroup.get('confirmPassword').hasError('required')
+            "
+          >
+            Please confirm your password
+          </mat-error>
+          <mat-error
+            *ngIf="
+              firstPartGroup.get('confirmPassword').hasError('isMatch')
+            "
+          >
+            Password must match
+          </mat-error>
+        </mat-form-field>
+
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+
+    
+    <mat-step label="Second Form" [stepControl]="secondPartGroup">
+      <p>Enter your information for registration</p>
+      <form [formGroup]="secondPartGroup">
+        <mat-form-field class="example-full-width user">
+          <mat-label> city </mat-label>
+          <input matInput formControlName="city" required />
+          <mat-error *ngIf="secondPartGroup.get('city').hasError('required')">
+            Please enter your city name
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width email">
+          <mat-label> street </mat-label>
+          <input matInput formControlName="street" required/>
+          <mat-error
+            *ngIf="secondPartGroup.get('street').hasError('required')"
+          >
+            Please enter your street name
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width user">
+          <mat-label> First Name </mat-label>
+          <input matInput formControlName="firstName" required />
+          <mat-error *ngIf="secondPartGroup.get('firstName').hasError('required')">
+            Please enter your First Name
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width email">
+          <mat-label> Last Name </mat-label>
+          <input matInput formControlName="lastName" required/>
+          <mat-error
+            *ngIf="secondPartGroup.get('lastName').hasError('required')"
+          >
+            Please enter your Surname
+          </mat-error>
+        </mat-form-field>
+        <div>
+          <button mat-button type="button" (click)="registerUser()">submit</button>
+        </div>
+      </form>
+    </mat-step>
+    
+  </mat-horizontal-stepper>
+</div>

@@ -9,4 +9,22 @@ router.post("/add",async (req,res)=>{
         return res.status(500).json(err);
     }
 })
+router.get('/',async (req,res)=>{
+    try{
+        const products = await productService.getAllProducts();
+        return res.json(products);
+    }
+    catch(err){
+        return res.status(500).json(err);
+    }
+})
+router.get('/:categoryID',async (req,res)=>{
+    try{
+        const products = await productService.getAllProductsByCategoryID(req.params.categoryID);
+        return res.json(products);
+    }
+    catch(err){
+        return res.status(500).json(err);
+    }
+})
 module.exports = router;

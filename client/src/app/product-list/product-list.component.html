@@ -1,0 +1,15 @@
+
+<mat-toolbar class="categories-container">
+    <div>
+        <input type="text" name="search" placeholder="Search for products" [(ngModel)]="search"/>
+    </div>
+    <div *ngFor="let category of categories">
+        <a mat-button (click)="selectCategory(category._id)">{{category.name}}</a>
+    </div>
+</mat-toolbar>
+
+<div class="product-list">
+    <div class="product-container" *ngFor="let product of products | filter:search">
+        <app-product [product]="product"></app-product>
+    </div>
+    </div>

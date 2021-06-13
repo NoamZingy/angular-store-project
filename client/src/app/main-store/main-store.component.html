@@ -1,0 +1,7 @@
+<div class="main-store">
+    <div class="product-list-container">
+        <app-product-list [products]="productList" 
+        (onSelectedCategory)="productsByCategory($event)"
+        [categories]="categories"></app-product-list>
+    </div>
+</div>

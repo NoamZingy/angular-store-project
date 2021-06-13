@@ -1,0 +1,9 @@
+.product{
+margin:50px;
+box-sizing:border-box;
+flex:1;
+}
+img{
+    width:100px;
+    height:100px;
+}

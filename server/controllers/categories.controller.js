@@ -12,4 +12,13 @@ router.post("/add",async (req,res)=>{
 
 
 })
+router.get('/',async (req,res)=>{
+    try{
+        const categories = await categoryService.getAllCategories();
+        return res.json(categories);
+    }
+    catch(err){
+        return res.status(500).json(err);
+    }
+})
 module.exports = router;

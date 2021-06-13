@@ -1,0 +1,9 @@
+.product-list{
+    display: flex;
+}
+.product-container{
+   flex:1;
+}
+.search{
+    margin-left: 50%;
+ }

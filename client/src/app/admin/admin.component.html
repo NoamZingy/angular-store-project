@@ -1,0 +1,47 @@
+<div class="admin">
+    <form [formGroup]="productForm">
+        <mat-form-field class="example-full-width inputproduct">
+            <mat-label>Product Name</mat-label>
+            <input matInput formControlName="productName" required>
+            <mat-error *ngIf="productForm.get('productName').hasError('required')">
+                Enter product name
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width inputproduct">
+            <mat-label>Product Price</mat-label>
+            <input matInput formControlName="productPrice" required>
+            <mat-error *ngIf="productForm.get('productPrice').hasError('required')">
+                Enter product price
+            </mat-error>
+        </mat-form-field>
+        <div>
+        <mat-form-field class="example-full-width inputproduct">
+            <mat-label>Product Image</mat-label>
+            <input matInput formControlName="productImage" required>
+            <mat-error *ngIf="productForm.get('productImage').hasError('required')">
+                Enter product image
+            </mat-error>
+        </mat-form-field>
+        <div class="image" *ngIf="productForm.get('productImage').value">
+            <img [src]="productForm.get('productImage').value"/>
+        </div>
+    </div>
+    <div>
+        <mat-form-field class="example-full-width inputProduct">
+            <mat-label>Category</mat-label>
+            <select matNativeControl required formControlName="productCategory" name="productCategory">
+                <option value="">Choose</option>
+                <option *ngFor="let category of categories" [value]="category._id">
+                    {{category.name}}
+                </option>
+            </select>
+            <mat-error *ngIf="productForm.get('productCategory').hasError('required')">
+                Choose product category
+            </mat-error>
+        </mat-form-field>
+    </div>
+        <div>
+            <button mat-raised-button color="primary" (click)="addProduct()">Add</button>
+        </div>
+    </form>
+</div>
