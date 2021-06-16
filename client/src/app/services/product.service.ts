@@ -12,4 +12,13 @@ export class ProductService {
   getProductsByCategoryID(categoryID:string){
     return this.http.get<Array<any>>('/backend/api/product/'+categoryID)
   }
+  addNewProduct(product:any){
+    const payload = {
+      name:product.productName,
+      price:product.productPrice,
+      image:product.productImage,
+      categoryID:product.productCategory
+    }
+    return this.http.post('/backend/api/product/add',payload)
+  }
 }

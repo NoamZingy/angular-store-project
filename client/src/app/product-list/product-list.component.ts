@@ -11,11 +11,15 @@ export class ProductListComponent implements OnInit {
   @Input() products:Array<any>=[];
   @Input() categories:Array<any>=[];
   @Output() onSelectedCategory= new EventEmitter();
+  @Output() onSelectedProduct= new EventEmitter();
 
   search:string =""
   ngOnInit(): void {
   }
 
+  selectedProduct(product:any){
+    this.onSelectedProduct.emit(product)
+  }
   selectCategory(categoryID:string){
     this.onSelectedCategory.emit(categoryID);
   }

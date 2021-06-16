@@ -10,6 +10,6 @@
 
 <div class="product-list">
     <div class="product-container" *ngFor="let product of products | filter:search">
-        <app-product [product]="product"></app-product>
+        <app-product [product]="product" (click)="selectedProduct(product)"></app-product>
     </div>
     </div>
