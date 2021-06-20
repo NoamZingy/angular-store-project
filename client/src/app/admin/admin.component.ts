@@ -33,4 +33,5 @@ export class AdminComponent implements OnInit,OnChanges {
       this.onAddedProduct.emit(this.productForm.value);
       this.productForm.reset();
   }
+
 }

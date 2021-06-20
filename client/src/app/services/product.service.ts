@@ -21,4 +21,14 @@ export class ProductService {
     }
     return this.http.post('/backend/api/product/add',payload)
   }
+
+  updateProduct(product:any){
+    const payload = {
+      name:product.productName,
+      price:product.productPrice,
+      image:product.productImage,
+      categoryID:product.productCategory
+    }
+    return this.http.put('/backend/api/product/update',payload)
+  }
 }

@@ -30,9 +30,16 @@ export class MainStoreComponent implements OnInit {
     });
   }
   addAdminProduct(product){
+    if (this.selectedProductItem === null){
     this.productService.addNewProduct(product).subscribe((result)=>{
         this.getAllProducts();
     })
+  }
+  else {
+    this.productService.updateProduct(product).subscribe((result)=>{
+      this.getAllProducts();
+  })
+  }
   }
   productsByCategory($categoryID){
     this.productService.getProductsByCategoryID($categoryID).subscribe(results=>{
