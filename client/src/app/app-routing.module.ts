@@ -5,9 +5,10 @@ import { MainStoreComponent } from './main-store/main-store.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
-  {path:'' ,component:RegisterComponent},
-  {path:'login',component:LoginComponent},
+  {path:'register' ,component:RegisterComponent},
+  {path:'',component:LoginComponent},
   {path:'store',component:MainStoreComponent}
+  
 ];
 
 @NgModule({

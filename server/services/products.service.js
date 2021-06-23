@@ -11,11 +11,15 @@ const addProduct = async ({name,image,price,categoryID}) => {
     }
 }
 
-const updateProduct = async ({name,image,price,categoryID}) => {
+
+
+const updateProduct = async (_id ,{name,image,price,categoryID}) => {
     try {
-        const updatedProduct = Product.updateOne({name:name}, {$set: {name:name, image:image, price:price, categoryID:categoryID}});
-        console.log(updatedProduct);
-        return await updatedProduct.save()
+        const updatedProduct = await Product.updateOne({_id: _id}, {$set: {name:name,
+             image:image, price:price,
+             categoryID:categoryID}});
+             console.log(updatedProduct);
+        return updatedProduct;
 
     }
     catch(err){
@@ -52,5 +56,5 @@ module.exports= {
     addProduct,
     getAllProducts,
     getAllProductsByCategoryID,
-    updateProduct
+    updateProduct,
 }

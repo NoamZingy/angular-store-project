@@ -21,6 +21,8 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductComponent } from './product/product.component';
 import { FilterPipe } from './filter.pipe';
 import { AdminComponent } from './admin/admin.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { CartComponent } from './cart/cart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +32,9 @@ import { AdminComponent } from './admin/admin.component';
     ProductListComponent,
     ProductComponent,
     FilterPipe,
-    AdminComponent
+    AdminComponent,
+    HomePageComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
