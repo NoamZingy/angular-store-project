@@ -29,6 +29,6 @@ export class ProductService {
       image:product.productImage,
       categoryID:product.productCategory
     }
-    return this.http.put('/backend/api/product/update',payload)
+    return this.http.put(`/backend/api/product/update`,payload)
   }
 }

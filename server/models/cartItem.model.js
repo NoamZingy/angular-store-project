@@ -5,8 +5,8 @@ const cartItem = new Schema({
     },
     generalPrice: Number,
 
-    productID:{
-        type:Schema.Types.ObjectId,ref:"Product"
+    product:{
+        type:Schema.Types.ObjectId,ref:"product"
     } ,
     cartID:{
         type:Schema.Types.ObjectId,ref:"ShoppingCart"

@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const ShoppingCart = require("../models/shoppingCart.model");
 const Order = require('../models/order.model');
 const CartItem = require('../models/cartItem.model');
@@ -16,13 +17,25 @@ const cartsListOfUser = await Order.find({userID:userID}).map((cart)=>{
 });
 const openedCart = await ShoppingCart.findOne({userID:userID,_id:{$nin:cartsListOfUser}}).populate('user');
 const userResponse = {};
+
 if(openedCart === null){
 userResponse.cart = await addCart({userID:userID});
 userResponse.cartItems = [];
 } else{
 userResponse.cart = openedCart;
-userResponse.cartItems = await CartItem.find({cartID:openedCart._id});
+
+try {
+    userResponse.cartItems = await CartItem.find(
+        {cartID:mongoose.Types.ObjectId(openedCart._id)}).populate({
+            path:'product',
+            select:'_id name price image categoryID'});
+    } catch(error){
+        console.log(error);
+    }
 }
+
+console.log(userResponse);
+return userResponse;
 }
 
 

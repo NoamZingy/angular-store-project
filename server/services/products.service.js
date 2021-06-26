@@ -13,9 +13,9 @@ const addProduct = async ({name,image,price,categoryID}) => {
 
 
 
-const updateProduct = async (_id ,{name,image,price,categoryID}) => {
+const updateProduct = async ({name,image,price,categoryID}) => {
     try {
-        const updatedProduct = await Product.updateOne({_id: _id}, {$set: {name:name,
+        const updatedProduct = await Product.updateOne({name: name}, {$set: {name:name,
              image:image, price:price,
              categoryID:categoryID}});
              console.log(updatedProduct);

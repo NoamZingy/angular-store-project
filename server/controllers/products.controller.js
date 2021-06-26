@@ -27,9 +27,9 @@ router.get('/:categoryID',async (req,res)=>{
         return res.status(500).json(err);
     }
 })
-router.put("/update/:_id",async (req,res)=>{
+router.put("/update",async (req,res)=>{
     try{
-        const updatedProduct =   await productService.updateProduct(req.params._id, req.body);
+        const updatedProduct =   await productService.updateProduct(req.body);
         return res.json(updatedProduct);
     } catch(err){
         return res.status(500).json(err);

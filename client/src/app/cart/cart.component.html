@@ -1,1 +1,25 @@
-<p>cart works!</p>
+<div class="cart">
+<h2>Your Shopping cart</h2>
+<div>
+    <mat-list *ngIf="cart">
+        <mat-list-item *ngFor="let cartItem of cart.cartItems">
+            <div>
+                <label>{{cartItem.product.name}}</label>
+                <div class="image">
+                    <img [src]="cartItem.product.image" class="product-image"/>
+                </div>
+                <div>
+                    <label>Quantity: {{cartItem.quantity}}</label>
+                </div>
+                <div>
+                    <label>Price: {{cartItem.generalPrice}}</label>
+                </div>
+
+            </div>
+        </mat-list-item>
+    </mat-list>
+    <div class="total" *ngIf="cart && cart.cartItems.length>0">
+            Total:{{totalCartPrices}}
+    </div>
+</div>
+</div>

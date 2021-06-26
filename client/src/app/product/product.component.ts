@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input} from '@angular/core';
+import { Component, OnInit ,Input, Output,EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-product',
@@ -6,10 +6,23 @@ import { Component, OnInit ,Input} from '@angular/core';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-@Input() product:any
+@Input() product:any = null;
+@Input() isAdmin:boolean = false;
+@Output() onSelectProduct = new EventEmitter();
+quantity:number =1;
   constructor() { }
 
   ngOnInit(): void {
+  }
+  select(){
+      if(this.isAdmin){
+        const payload = {...this.product}
+        this.onSelectProduct.emit(payload);
+      }
+  }
+  addItemToCart(){
+    const payload:any = {...this.product,quantity:this.quantity};
+    this.onSelectProduct.emit(payload);
   }
 
 }

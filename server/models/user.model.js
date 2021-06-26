@@ -34,7 +34,7 @@ const user = new Schema({
     role:{
         type:String,
         default:'client',
-        enum:["client","admin"]
+       /*  enum:["client","admin"] */
     }
    
 },{timestamps:{createdAt:'created_at',updatedAt:'updated_at'}});

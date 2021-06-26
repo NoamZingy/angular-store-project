@@ -2,7 +2,8 @@
 
     <mat-drawer-container class="drawer-container">
         <mat-drawer #drawer mode="side" class="example-sidenav" opened>
-            <app-admin [categories]="categories" [productEdited]="selectedProductItem" (onAddedProduct)="addAdminProduct($event)"></app-admin>
+            <app-admin [categories]="categories" *ngIf="isAdmin===true" [productEdited]="selectedProductItem" (onAddedProduct)="addAdminProduct($event)"></app-admin>
+            <app-cart [cart]="cart"></app-cart>
         </mat-drawer>
         <div class="product-list-container">
             <app-product-list [products]="productList" 

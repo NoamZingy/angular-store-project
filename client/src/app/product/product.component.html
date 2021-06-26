@@ -1,5 +1,23 @@
 <div class="product">
+    <mat-card class="product-item" (click)="select()">
+        <mat-card-content>
     <label>{{product.name}}</label>
     <label>{{product.price}}</label><br/>
     <img [src]="product.image"/>
+    <div class="selected">
+        <form>
+        <mat-form-field>
+            <mat-label>Quantity</mat-label>
+            <div class="quantity">
+                <input type="number"  min="1"  matInput [(ngModel)]="quantity" name="quantity"/>
+            </div>
+
+        </mat-form-field>
+        <button mat-mini-fab (click)="addItemToCart()">
+            <mat-icon>add_shopping_cart</mat-icon>
+        </button>
+    </form>
+    </div>
+</mat-card-content>
+</mat-card>
     </div>

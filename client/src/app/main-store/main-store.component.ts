@@ -1,5 +1,6 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
+import { CartService } from '../services/cart.service';
 import { CategoryService } from '../services/category.service';
 import { ProductService } from '../services/product.service';
 
@@ -10,10 +11,12 @@ import { ProductService } from '../services/product.service';
 })
 export class MainStoreComponent implements OnInit {
 
-  constructor(private productService:ProductService,private categoryService:CategoryService) { }
+  constructor(private productService:ProductService,private categoryService:CategoryService,private cartService:CartService) { }
 
   productList:Array<any>=[];
   categories:Array<any>=[];
+  isAdmin:boolean = false;
+  cart:any = null;
   selectedProductItem:any=null;
   @ViewChild('drawer',{static:true}) public drawer!:MatDrawer;
   ngOnInit(): void {
@@ -21,7 +24,15 @@ export class MainStoreComponent implements OnInit {
     this.categoryService.getCategories().subscribe(results=>{
       this.categories= results;
     });
+    if(!this.isAdmin){
+      this.getCartOfUser();
+    }
     this.drawer.open();
+  }
+  getCartOfUser(){
+    this.cartService.lastCartOfUser().subscribe(userCart=>{
+      this.cart = userCart;
+    })
   }
 
   getAllProducts(){
@@ -47,7 +58,19 @@ export class MainStoreComponent implements OnInit {
     })
   }
   selectedProduct($product:any){
-    this.selectedProductItem = $product;
+    if(this.isAdmin){
+      this.selectedProductItem = $product;
+    } else{
+      const cartItemPayload:any= {};
+      cartItemPayload.cartID = this.cart.cart._id;
+      cartItemPayload.product = $product._id;
+      cartItemPayload.quantity = $product.quantity;
+      this.cartService.addItemToCart(cartItemPayload).subscribe((result)=>{
+          this.getCartOfUser();
+      });
+
+    }
+   
   }
 
 }

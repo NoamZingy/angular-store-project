@@ -9,7 +9,7 @@ router.post("/add",async (req,res)=>{
         return res.status(500).json(err);
     }
 })
-router.get('/lastCartOfUser', async(req,res)=>{
+router.get('/lastCartOfUser', async (req,res)=>{
     try{
         const lastCart = await shoppingCartService.currentCart("60a3fdf199316537087fd0e9");
         res.json(lastCart);
