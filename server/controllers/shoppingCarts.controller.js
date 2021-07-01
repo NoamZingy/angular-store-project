@@ -11,9 +11,11 @@ router.post("/add",async (req,res)=>{
 })
 router.get('/lastCartOfUser', async (req,res)=>{
     try{
-        const lastCart = await shoppingCartService.currentCart("60a3fdf199316537087fd0e9");
+        const userID = req.user._id;
+        const lastCart = await shoppingCartService.currentCart(userID);
         res.json(lastCart);
     } catch(err){
+        console.log("err "+err)
         return res.status(500).json(err);
     }
 })

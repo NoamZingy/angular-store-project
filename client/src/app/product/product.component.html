@@ -1,23 +1,18 @@
 <div class="product">
-    <mat-card class="product-item" (click)="select()">
-        <mat-card-content>
-    <label>{{product.name}}</label>
-    <label>{{product.price}}</label><br/>
-    <img [src]="product.image"/>
-    <div class="selected">
-        <form>
-        <mat-form-field>
-            <mat-label>Quantity</mat-label>
-            <div class="quantity">
-                <input type="number"  min="1"  matInput [(ngModel)]="quantity" name="quantity"/>
+            <div class="card product-item" style="width: 18rem;"  (click)="select()">
+                <img class="card-img-top" [src]="product.image" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">{{product.name}}</h5>
+                  <p class="card-text"> price: {{product.price}} 💰</p>
+                <form *ngIf="!isAdmin">
+                    <mat-form-field>
+                        <mat-label>Quantity</mat-label>
+                            <input type="number" class="btn btn-primary" min="1"  matInput [(ngModel)]="quantity" name="quantity"/>
+                    </mat-form-field>
+                    <button mat-mini-fab (click)="addItemToCart()">
+                        <mat-icon>add_shopping_cart</mat-icon>
+                    </button>
+                </form>
+                
             </div>
-
-        </mat-form-field>
-        <button mat-mini-fab (click)="addItemToCart()">
-            <mat-icon>add_shopping_cart</mat-icon>
-        </button>
-    </form>
-    </div>
-</mat-card-content>
-</mat-card>
     </div>

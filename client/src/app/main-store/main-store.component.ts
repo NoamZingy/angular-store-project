@@ -3,6 +3,7 @@ import { MatDrawer } from '@angular/material/sidenav';
 import { CartService } from '../services/cart.service';
 import { CategoryService } from '../services/category.service';
 import { ProductService } from '../services/product.service';
+import { UserService } from '../services/registerService/user.service';
 
 @Component({
   selector: 'app-main-store',
@@ -11,11 +12,12 @@ import { ProductService } from '../services/product.service';
 })
 export class MainStoreComponent implements OnInit {
 
-  constructor(private productService:ProductService,private categoryService:CategoryService,private cartService:CartService) { }
+  constructor(private productService:ProductService,private categoryService:CategoryService,
+    private cartService:CartService,private userService:UserService) { }
 
   productList:Array<any>=[];
   categories:Array<any>=[];
-  isAdmin:boolean = false;
+  isAdmin:boolean;
   cart:any = null;
   selectedProductItem:any=null;
   @ViewChild('drawer',{static:true}) public drawer!:MatDrawer;
@@ -24,9 +26,15 @@ export class MainStoreComponent implements OnInit {
     this.categoryService.getCategories().subscribe(results=>{
       this.categories= results;
     });
-    if(!this.isAdmin){
-      this.getCartOfUser();
-    }
+    this.userService.getUser().subscribe((data)=>{
+      this.isAdmin = data.user.role === 'admin' ? true :false;
+     
+      if(!this.isAdmin){
+        this.getCartOfUser();
+      }
+    })
+
+    
     this.drawer.open();
   }
   getCartOfUser(){

@@ -34,7 +34,7 @@ try {
     }
 }
 
-console.log(userResponse);
+/* console.log(userResponse); */
 return userResponse;
 }
 

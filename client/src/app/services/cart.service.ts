@@ -14,4 +14,8 @@ export class CartService {
   addItemToCart(cartItem:any){
     return this.http.post('/backend/api/cartItem/add',cartItem);
   }
+  deleteItemFromCart(product:any){
+    const payload = product._id
+    return this.http.delete(`/backend/api/cartItem/delete/${payload}`);
+  }
 }

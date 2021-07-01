@@ -23,6 +23,7 @@ import { FilterPipe } from './filter.pipe';
 import { AdminComponent } from './admin/admin.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { CartComponent } from './cart/cart.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +51,8 @@ import { CartComponent } from './cart/cart.component';
     MatInputModule,
     MatSidenavModule,
     MatFormFieldModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

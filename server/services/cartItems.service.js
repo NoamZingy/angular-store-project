@@ -5,7 +5,7 @@ const Product = require('../models/product.model');
 const addCartItem = async (cartItem) => {
     try {
         //const currentCartItem = await CartItem.findOne({cartID:mongoose.Types.ObjectId(cartItem.cartID),productID:cartItem.productID}).populate("product").select("price");
-        const currentCartItem = await CartItem.findOne({ cartID:cartItem.cartID, product: cartItem.product }).populate('product');
+        const currentCartItem = await CartItem.findOne({ cartID:cartItem.cartID, product: cartItem.productID });
 
         
         if(currentCartItem){
@@ -28,8 +28,8 @@ const addCartItem = async (cartItem) => {
 }
 const updateCartItem = async(cartItem)=>{
     try{
-        const response = await CartItem.updateOne({_id:mongoose.Types.ObjectId(cartItem.cartID)},{
-            $set:cartItem
+        const response = await CartItem.findOneAndReplace({_id:mongoose.Types.ObjectId(cartItem.cartID)},
+        {$set: {quantity:cartItem.quantity}
         })
         return response;
     }
@@ -39,7 +39,18 @@ const updateCartItem = async(cartItem)=>{
     }
 }
 
+const deleteCartItem = async (_id) => {
+ try{
+console.log(_id);
+    const newCartItem = await CartItem.deleteOne({_id: mongoose.Types.ObjectId(_id)})
+    return newCartItem;
+ }
+ catch(err){
+    console.log( err);
+}
+}
+
 module.exports= {
     addCartItem,
-    
+    deleteCartItem, 
 }

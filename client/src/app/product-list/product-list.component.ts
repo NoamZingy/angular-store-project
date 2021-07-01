@@ -10,6 +10,7 @@ export class ProductListComponent implements OnInit {
   constructor() { }
   @Input() products:Array<any>=[];
   @Input() categories:Array<any>=[];
+  @Input() isAdmin:boolean = false;
   @Output() onSelectedCategory= new EventEmitter();
   @Output() onSelectedProduct= new EventEmitter();
 

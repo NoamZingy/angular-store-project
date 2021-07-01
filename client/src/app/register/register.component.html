@@ -1,6 +1,6 @@
 <div class="register-user">
   <mat-horizontal-stepper linear>
-    <mat-step label="First form" [stepControl]="firstPartGroup">
+    <mat-step label="Personal Details" [stepControl]="firstPartGroup">
       <p>Enter your information for registration</p>
       <form [formGroup]="firstPartGroup">
         <mat-form-field class="example-full-width user">
@@ -82,7 +82,7 @@
 
 
     
-    <mat-step label="Second Form" [stepControl]="secondPartGroup">
+    <mat-step label="Essential Details" [stepControl]="secondPartGroup">
       <p>Enter your information for registration</p>
       <form [formGroup]="secondPartGroup">
         <mat-form-field class="example-full-width user">
@@ -118,10 +118,10 @@
           </mat-error>
         </mat-form-field>
         <div>
-          <button mat-button type="button" (click)="registerUser()">submit</button>
+          <button mat-button type="button" class="btn btn-primary" (click)="registerUser()">submit</button>
         </div>
       </form>
     </mat-step>
-    
+  
   </mat-horizontal-stepper>
 </div>
