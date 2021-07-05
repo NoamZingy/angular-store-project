@@ -1,4 +1,5 @@
 import { Component, OnInit ,Input, Output,EventEmitter} from '@angular/core';
+import {MatSnackBar} from '@angular/material/snack-bar'
 
 @Component({
   selector: 'app-product',
@@ -10,7 +11,7 @@ export class ProductComponent implements OnInit {
 @Input() isAdmin:boolean = false;
 @Output() onSelectProduct = new EventEmitter();
 quantity:number =1;
-  constructor() { }
+  constructor( private MatSnackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -23,6 +24,8 @@ quantity:number =1;
   addItemToCart(){
     const payload:any = {...this.product,quantity:this.quantity};
     this.onSelectProduct.emit(payload);
+    this.MatSnackBar.open(`${payload.name} added successfully`, 'Undo', {
+      duration: 3000
+    });
   }
-
 }

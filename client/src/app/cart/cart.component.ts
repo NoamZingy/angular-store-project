@@ -1,4 +1,5 @@
 import { Component, OnInit ,Input,OnChanges, SimpleChanges} from '@angular/core';
+import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
 
 @Component({
@@ -8,11 +9,12 @@ import { CartService } from '../services/cart.service';
 })
 export class CartComponent implements OnInit ,OnChanges{
   
-  constructor(public cartService:CartService) { }
+  constructor(public cartService:CartService,private router:Router) { }
  
   totalCartPrices:number;
 
   @Input() cart:any = null;
+  @Input() isOrder:boolean = false;
   ngOnInit(): void {
   }
   updatePrice(){
@@ -25,6 +27,10 @@ export class CartComponent implements OnInit ,OnChanges{
     }
   }
 
+  order(){
+    this.router.navigate(['/order']);
+    
+  }
   getCartOfUser(){
     this.cartService.lastCartOfUser().subscribe(userCart=>{
       this.cart = userCart;
@@ -38,5 +44,11 @@ export class CartComponent implements OnInit ,OnChanges{
       
     });
   }
-
+  clearCart($product: any){
+    const payloadCart = {...$product};
+    payloadCart.cartID = this.cart.cart._id;
+    this.cartService.clearCart(payloadCart.cartID).subscribe((result)=>{
+      this.getCartOfUser();
+  })
+  }
 }

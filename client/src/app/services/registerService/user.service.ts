@@ -13,8 +13,12 @@ export class UserService {
   login(payload:any){
     return this.http.post('/backend/api/user/login',payload);
   }
+  
   getUser(){
     return this.http.get<any>('/backend/api/user/currentUser');
+  }
+  logoutUser(){
+    return this.http.get('/backend/api/user/logout');
   }
 
 

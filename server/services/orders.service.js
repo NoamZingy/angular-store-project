@@ -11,6 +11,16 @@ const addOrder = async ({userID,cartID,city,finalPrice,street, deliveryTime, las
     }
 }
 
+const getAllOrders = async() =>{
+    try {
+        return await Order.find({});
+    }
+    catch(err){
+        throw err;
+    }
+}
+
 module.exports= {
-    addOrder
+    addOrder,
+    getAllOrders
 }

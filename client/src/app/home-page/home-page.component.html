@@ -1,1 +1,28 @@
-<p>home-page works!</p>
+<ngb-carousel *ngIf="images">
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="images[0]" class="image">
+      </div>
+      <div class="carousel-caption text">
+        <h3>more than {{orders.length}} orders!!</h3>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="images[1]" class="image">
+      </div>
+      <div class="carousel-caption text">
+        <h3>more than {{productList.length}} products</h3>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="images[2]"  class="image">
+      </div>
+      <div class="carousel-caption text">
+        <h3>About Us ❤</h3>
+        <p>This is some text about our store </p>
+        <p>More information about our store </p>
+      </div>
+    </ng-template>
+  </ngb-carousel>

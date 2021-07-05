@@ -14,4 +14,4 @@ const cartItem = new Schema({
    
 },{timestamps:{createdAt:'created_at',updatedAt:'updated_at'}});
 
-module.exports = model("cartItem",cartItem);
+module.exports = model("CartItem",cartItem);

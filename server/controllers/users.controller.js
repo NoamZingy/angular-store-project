@@ -28,6 +28,12 @@ router.get('/currentUser',isValid,(req,res)=>{
     })
 })
 
+router.get('/logout', function(req, res){
+    req.logout();
+    return res.json('loggedout');
+   // res.redirect('/');
+  });
+
 router.post("/add",async (req,res)=>{
     try{
         const newUser = await userService.addUser(req.body);

@@ -9,6 +9,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule} from '@angular/material/toolbar';
 import { MatSidenavModule} from '@angular/material/sidenav';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatSnackBarModule} from '@angular/material/snack-bar'
+
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +30,9 @@ import { AdminComponent } from './admin/admin.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { CartComponent } from './cart/cart.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { OrderComponent } from './order/order.component';
+import { ShippingDetailsComponent } from './shipping-details/shipping-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +44,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FilterPipe,
     AdminComponent,
     HomePageComponent,
-    CartComponent
+    CartComponent,
+    NavBarComponent,
+    OrderComponent,
+    ShippingDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -50,8 +62,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatButtonModule,
     MatInputModule,
     MatSidenavModule,
+    MatGridListModule,
     MatFormFieldModule,
     HttpClientModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSnackBarModule,
     NgbModule
   ],
   providers: [],

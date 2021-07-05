@@ -16,10 +16,12 @@ const productController = require("./controllers/products.controller");
 const shoppingCartController = require("./controllers/shoppingCarts.controller");
 const cartItemController = require("./controllers/cartItems.controller");
 const orderController = require("./controllers/orders.controller");
+const receiptController = require('./controllers/receipt.controller');
 
 app.use(cors());
 app.use(session({secret:'myshoppingcart',resave: true,saveUninitialized:true}));
 
+app.use(express.static('public'));
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -38,9 +40,8 @@ app.use("/api/product",productController)
 app.use("/api/shoppingCart",shoppingCartController)
 app.use("/api/cartItem",cartItemController)
 app.use("/api/order",orderController)
-app.use('/',(req,res)=>{
-    res.send("Welcome");
-})
+app.use("/api/receipt",receiptController)
+
 const init = async ()=>{
     try{
         const connectMongoose = await mongoose.connect(config.dbConfiguration.url,{

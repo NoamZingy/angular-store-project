@@ -38,8 +38,19 @@ try {
 return userResponse;
 }
 
+const clearCart = async (_id) => {
+    try{
+   console.log(_id);
+       const newCartItem = await ShoppingCart.deleteOne({_id: mongoose.Types.ObjectId(_id)})
+       return newCartItem;
+    }
+    catch(err){
+       console.log( err);
+   }
+   }
+   
 
 
 module.exports= {
-    addCart,currentCart
+    addCart,currentCart, clearCart
 }

@@ -19,4 +19,15 @@ router.get('/lastCartOfUser', async (req,res)=>{
         return res.status(500).json(err);
     }
 })
+router.delete("/delete/:_id",async (req,res)=>{
+    try{
+        const newCartItem = 
+        await shoppingCartService.clearCart(req.params._id);
+        return res.json(newCartItem);
+    } catch(err){
+        console.log(err);
+        return res.status(500).json(err);
+    }
+})
+
 module.exports = router;

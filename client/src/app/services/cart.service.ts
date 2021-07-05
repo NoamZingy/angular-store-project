@@ -18,4 +18,7 @@ export class CartService {
     const payload = product._id
     return this.http.delete(`/backend/api/cartItem/delete/${payload}`);
   }
+  clearCart(cart:any){
+    return this.http.delete(`/backend/api/shoppingCart/delete/${cart}`);
+  }
 }

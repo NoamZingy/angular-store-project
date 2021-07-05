@@ -4,3 +4,6 @@ box-sizing:border-box;
 flex:1;
 font-family: cursive;
 }
+.product-item{
+cursor: pointer;
+}

@@ -1,0 +1,28 @@
+<div class="float-container">
+    <app-nav-bar></app-nav-bar>
+    <div class="float-child cart-child">
+        <button mat-flat-button color="accent" (click)="backToShop()"><mat-icon>reply</mat-icon>Back To Shop</button>
+     
+
+            <app-cart [cart]="cart" [isOrder]="true"></app-cart>
+        </div>
+
+    
+<div class="float-child">
+            <app-shipping-details [user]="user" *ngIf="user" (onOrderDemand)="orderDelivery($event)"></app-shipping-details>
+      
+        <ng-template #dialogAlert>
+            <h2 matDialogTitle>Thanks! </h2>
+            <div>
+               Order received , here your receipt:<a [href]="link" target="_blank">Click Here</a>
+            </div>
+            <mat-dialog-actions>
+                <button mat-button matDialogClose>OK</button>
+            </mat-dialog-actions>
+        </ng-template>
+    
+
+
+    </div>
+
+</div>

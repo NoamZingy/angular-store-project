@@ -9,4 +9,17 @@ router.post("/add",async (req,res)=>{
         return res.status(500).json(err);
     }
 })
+
+
+
+router.get('/',async (req,res)=>{
+    try{
+        const orders = await ordersService.getAllOrders();
+        return res.json(orders);
+    }
+    catch(err){
+        return res.status(500).json(err);
+    }
+})
+
 module.exports = router;

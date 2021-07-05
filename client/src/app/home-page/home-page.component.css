@@ -1,0 +1,18 @@
+.image{
+    height: 350px;
+    width: 800px;
+}
+.text{
+    margin-bottom: 150px;
+    font-family: cursive;
+    font-size:large;
+    font-style: italic;
+    color: black;
+}
+.about-us{
+    margin-bottom: 150px;
+    font-family: cursive;
+    font-size:large;
+    font-style: italic;
+    color: green;
+}
