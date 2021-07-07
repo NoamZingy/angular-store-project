@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit,ViewChild, Input} from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { CartService } from '../services/cart.service';
 import { CategoryService } from '../services/category.service';
@@ -14,7 +14,8 @@ export class MainStoreComponent implements OnInit {
 
   constructor(private productService:ProductService,private categoryService:CategoryService,
     private cartService:CartService,private userService:UserService) { }
-
+  
+  
   productList:Array<any>=[];
   categories:Array<any>=[];
   isAdmin:boolean;
@@ -35,7 +36,7 @@ export class MainStoreComponent implements OnInit {
     })
 
     
-    this.drawer.open();
+  
   }
   getCartOfUser(){
     this.cartService.lastCartOfUser().subscribe(userCart=>{

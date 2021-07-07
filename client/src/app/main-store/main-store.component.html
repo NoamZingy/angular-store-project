@@ -1,7 +1,7 @@
 <app-nav-bar></app-nav-bar>
 <div class="main-store">
     <mat-drawer-container class="example-container" [hasBackdrop]="false">
-        <mat-drawer #drawer mode="side">
+        <mat-drawer #drawer mode="side" >
             <app-admin [categories]="categories" *ngIf="isAdmin===true" [productEdited]="selectedProductItem" (onAddedProduct)="addAdminProduct($event)"></app-admin>
             <app-cart [cart]="cart" *ngIf="isAdmin===false"  >
             </app-cart>

@@ -2,6 +2,7 @@
     align-self: center;
     text-align: center;
     align-content: center;
+    background-color: #fffafa;
 }
 .headline{
     align-self: center;
@@ -9,7 +10,11 @@
     font-size: large;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: crimson;
+  
 }
 .homePageComponent{
     margin-bottom: 150px;
+}
+.card{
+    background-color: #f3f3f3;
 }
