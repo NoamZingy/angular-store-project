@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSpinner } from '@angular/material/progress-spinner';
 
 import { CartService } from '../services/cart.service';
 import { OrdersService } from '../services/orders.service';
@@ -19,6 +20,7 @@ export class OrderComponent implements OnInit {
   cart:any = null;
   user:any = null;
   link:string=null;
+  loader:Boolean = false;
   @ViewChild('dialogAlert') dialogAlert: TemplateRef<any>;
 
 
@@ -42,6 +44,7 @@ export class OrderComponent implements OnInit {
   }
 
   orderDelivery($payload){
+    this.loader = true
     const totalPrice = this.cart.cartItems.reduce((prod1,prod2)=>prod1+prod2.generalPrice,0);
     const payloadOrder = {...$payload};
     payloadOrder.cartID = this.cart.cart._id;
@@ -61,7 +64,7 @@ export class OrderComponent implements OnInit {
        const payloadReceipt = {client:this.user._id,receiptString:receiptString1}
        this.ordersService.generateReceipts(payloadReceipt).subscribe((receiptLink:any)=>{
         this.link = receiptLink.path;
-
+        this.loader = false
         this.opendialogAlert();
         this.deleteCart($payload)
        })
